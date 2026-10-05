@@ -1,0 +1,3975 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nguyễn Hoài An | Wonderland Interactive Portfolio</title>
+  <meta name="description" content="Online Portfolio cá nhân của Nguyễn Hoài An - Sinh viên Chuyên ngành Tiếng Pháp thương mại FTU. Thế giới kỳ diệu Alice in Wonderland.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫖</text></svg>">
+
+  <!-- Google Fonts: 100% Full Vietnamese Support (Playfair Display, Merriweather, Plus Jakarta Sans, Be Vietnam Pro) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <style>
+/* ==========================================================================
+   ALICE IN WONDERLAND INTERACTIVE PORTFOLIO - NGUYỄN HOÀI AN
+   Styling Architecture: Enchanted Fairytale Aesthetic & Luxury Glassmorphism
+   Typography: 100% Clean Vietnamese Glyphs (Playfair Display & Plus Jakarta Sans)
+   ========================================================================== */
+
+:root {
+  /* Magical Palette */
+  --color-bg-dark: #071510;
+  --color-bg-midnight: #0c1824;
+  --color-forest-deep: #092318;
+  --color-forest-emerald: #144534;
+  --color-alice-blue: #7cc6fe;
+  --color-sapphire: #1d4e89;
+  --color-mystic-violet: #5c2079;
+  --color-pansy-purple: #8e24aa;
+  --color-royal-ruby: #b71c1c;
+  --color-rose-crimson: #e91e63;
+  --color-fairy-gold: #ffd166;
+  --color-gold-bright: #ffdf70;
+  --color-cream-parchment: #fff8e7;
+  
+  /* Text & Surfaces */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-gold: #ffe082;
+  
+  --glass-bg: rgba(12, 28, 22, 0.76);
+  --glass-border: rgba(255, 209, 102, 0.28);
+  --glass-border-hover: rgba(255, 209, 102, 0.65);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.55);
+  
+  /* Typography - 100% Vietnamese Compatible */
+  --font-serif-royal: 'Playfair Display', 'Merriweather', serif;
+  --font-serif-classic: 'Merriweather', 'Playfair Display', serif;
+  --font-script: 'Playfair Display', 'Merriweather', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  
+  /* Transitions */
+  --trans-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-smooth: 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  --trans-bounce: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body.wonderland-theme {
+  background-color: var(--color-bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(92, 32, 121, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(20, 69, 52, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(29, 78, 137, 0.25) 0%, transparent 45%),
+    linear-gradient(180deg, #071510 0%, #0a1b2a 50%, #12091c 100%);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #071510;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-sapphire), var(--color-mystic-violet), var(--color-fairy-gold));
+  border-radius: 5px;
+  border: 2px solid #071510;
+}
+
+/* Canvas Magic Background */
+#magic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+.cursor-pointer {
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 8px #ffd166);
+  animation: cursorRotate 4s linear infinite;
+}
+@keyframes cursorRotate {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Audio Control Hub */
+.audio-control-hub {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  gap: 12px;
+}
+
+.magical-icon-btn {
+  background: rgba(12, 28, 22, 0.88);
+  border: 1px solid var(--glass-border);
+  color: var(--color-fairy-gold);
+  padding: 8px 16px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: var(--trans-smooth);
+}
+.magical-icon-btn:hover {
+  background: rgba(29, 78, 137, 0.9);
+  border-color: var(--color-fairy-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 209, 102, 0.4);
+}
+.magical-icon-btn.playing {
+  border-color: var(--color-fairy-gold);
+  color: #fff;
+  background: linear-gradient(135deg, rgba(92,32,121,0.85), rgba(20,69,52,0.85));
+}
+.sound-waves {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+.sound-waves .wave {
+  width: 3px;
+  height: 4px;
+  background: var(--color-fairy-gold);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.magical-icon-btn.playing .sound-waves .wave:nth-child(1) {
+  animation: waveMotion 1s ease-in-out infinite 0.1s;
+}
+.magical-icon-btn.playing .sound-waves .wave:nth-child(2) {
+  animation: waveMotion 1s ease-in-out infinite 0.3s;
+}
+.magical-icon-btn.playing .sound-waves .wave:nth-child(3) {
+  animation: waveMotion 1s ease-in-out infinite 0.2s;
+}
+@keyframes waveMotion {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+
+/* Top Sticky Navigation */
+.wonderland-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 36px;
+  background: rgba(7, 21, 16, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 900;
+  transition: var(--trans-smooth);
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-crown {
+  font-size: 1.35rem;
+  filter: drop-shadow(0 0 6px var(--color-fairy-gold));
+}
+.brand-name {
+  font-family: var(--font-serif-royal);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-fairy-gold);
+  letter-spacing: 0.5px;
+}
+.brand-subtitle {
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-alice-blue);
+  margin-left: 6px;
+}
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+.nav-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: var(--trans-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-item:hover, .nav-item.active {
+  color: #fff;
+  background: rgba(255, 209, 102, 0.15);
+  border: 1px solid var(--glass-border);
+  text-shadow: 0 0 8px rgba(255,209,102,0.6);
+}
+
+/* ==========================================================================
+   SECTION A: THE RABBIT HOLE INTRO SCREEN
+   ========================================================================== */
+.rabbit-hole-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background: radial-gradient(circle at center, #1b355a 0%, #0d1e18 45%, #050b08 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.rabbit-hole-container.shrink-fade-out {
+  opacity: 0;
+  transform: scale(3.5) rotate(25deg);
+  pointer-events: none;
+}
+
+/* 3D Vortex Rings */
+.vortex-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vortex-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 209, 102, 0.25);
+  box-shadow: 0 0 40px rgba(124, 198, 254, 0.2), inset 0 0 40px rgba(92, 32, 121, 0.3);
+}
+.ring-1 {
+  width: 300px;
+  height: 300px;
+  animation: spinVortex 12s linear infinite;
+  border-color: rgba(255, 209, 102, 0.35);
+}
+.ring-2 {
+  width: 550px;
+  height: 550px;
+  animation: spinVortex 20s linear infinite reverse;
+  border-color: rgba(124, 198, 254, 0.3);
+}
+.ring-3 {
+  width: 850px;
+  height: 850px;
+  animation: spinVortex 28s linear infinite;
+  border-color: rgba(233, 30, 99, 0.2);
+}
+.ring-4 {
+  width: 1200px;
+  height: 1200px;
+  animation: spinVortex 36s linear infinite reverse;
+  border-color: rgba(255, 209, 102, 0.15);
+}
+@keyframes spinVortex {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Floating Debris */
+.falling-debris-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.debris-item {
+  position: absolute;
+  font-size: 2.2rem;
+  opacity: 0.65;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  animation: tumbleFloat 10s ease-in-out infinite;
+}
+.debris-clock { top: 15%; left: 12%; animation-duration: 8s; color: var(--color-fairy-gold); }
+.card-spade { top: 70%; left: 10%; animation-duration: 12s; color: #fff; font-size: 3rem; }
+.card-heart { top: 20%; right: 15%; animation-duration: 9s; color: var(--color-rose-crimson); font-size: 3rem; }
+.debris-tea { top: 65%; right: 12%; animation-duration: 11s; }
+.debris-cup { top: 80%; left: 45%; animation-duration: 14s; }
+.debris-key { top: 25%; left: 40%; animation-duration: 7s; }
+.debris-book { top: 40%; right: 8%; animation-duration: 13s; }
+.debris-cat-grin { top: 8%; right: 35%; animation-duration: 10s; }
+.debris-mirror { top: 82%; right: 30%; animation-duration: 12s; }
+
+@keyframes tumbleFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg) scale(1.1); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Intro Center Card */
+.intro-glass-portal {
+  position: relative;
+  z-index: 10;
+  max-width: 820px;
+  width: 90%;
+  background: rgba(7, 21, 16, 0.88);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(124, 198, 254, 0.2);
+  border-radius: 28px;
+  padding: 40px 36px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+.rabbit-tag {
+  display: inline-block;
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-fairy-gold);
+  margin-bottom: 12px;
+}
+.portal-title .title-sub {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.portal-title .title-main {
+  display: block;
+  font-family: var(--font-serif-royal);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+  text-shadow: 0 0 15px rgba(255, 209, 102, 0.6), 0 0 30px rgba(255, 209, 102, 0.3);
+  letter-spacing: 0.5px;
+}
+.portal-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  font-style: italic;
+  margin: 18px auto 32px;
+  max-width: 650px;
+  line-height: 1.6;
+}
+.quote-author {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--color-alice-blue);
+}
+
+/* Potions / Cake Choice Group */
+.wonderland-potions-group {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  margin: 30px 0 20px;
+  flex-wrap: wrap;
+}
+
+.potion-card {
+  background: rgba(20, 45, 35, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 24px 28px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--trans-bounce);
+  position: relative;
+  min-width: 220px;
+}
+.potion-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--color-fairy-gold);
+  background: rgba(29, 78, 137, 0.65);
+  box-shadow: 0 10px 30px rgba(255, 209, 102, 0.4);
+}
+
+/* Bottle Graphic */
+.potion-bottle {
+  width: 60px;
+  height: 90px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.cork {
+  width: 20px;
+  height: 10px;
+  background: #8d6e63;
+  border-radius: 3px 3px 0 0;
+}
+.bottle-neck {
+  width: 24px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(255,255,255,0.4);
+  border-right: 2px solid rgba(255,255,255,0.4);
+}
+.bottle-body {
+  width: 58px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px 12px 20px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(124, 198, 254, 0.5);
+}
+.sapphire-liquid {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(180deg, #64b5f6, #1565c0);
+  border-radius: 0 0 18px 18px;
+}
+.potion-tag-label {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff8e7;
+  color: #0c1824;
+  font-family: var(--font-serif-royal);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Cake Graphic */
+.cake-box {
+  width: 60px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.cherry {
+  font-size: 1.2rem;
+  transform: translateY(4px);
+}
+.cake-frosting {
+  width: 65px;
+  height: 28px;
+  background: #f48fb1;
+  border-radius: 14px 14px 4px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(233, 30, 99, 0.4);
+}
+.frosting-text {
+  color: #880e4f;
+  font-family: var(--font-serif-royal);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.cake-base {
+  width: 58px;
+  height: 24px;
+  background: #ffe082;
+  border-radius: 4px 4px 10px 10px;
+  border-top: 2px dashed #ad1457;
+}
+
+.potion-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.potion-text {
+  font-family: var(--font-serif-royal);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-fairy-gold);
+}
+.potion-subtext {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.intro-hint-bar {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.intro-hint-bar strong {
+  color: var(--color-fairy-gold);
+}
+
+/* ==========================================================================
+   MAIN HUB SECTIONS GENERAL
+   ========================================================================== */
+.wonderland-main-hub {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+  position: relative;
+  z-index: 10;
+}
+.wonderland-main-hub.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.wonder-section {
+  padding: 100px 24px;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* Glass Panels */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--trans-smooth);
+}
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 209, 102, 0.2);
+}
+
+/* Headings & Section Subtitles */
+.section-subtitle {
+  display: inline-block;
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-fairy-gold);
+  margin-bottom: 6px;
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.4);
+}
+.section-title {
+  font-family: var(--font-serif-royal);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.3px;
+  margin-bottom: 12px;
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 750px;
+  line-height: 1.65;
+}
+
+/* General Buttons */
+.wonder-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: var(--trans-smooth);
+}
+.primary-btn {
+  background: linear-gradient(135deg, #1d4e89, #5c2079);
+  color: #fff;
+  border: 1px solid var(--color-fairy-gold);
+  box-shadow: 0 4px 15px rgba(255, 209, 102, 0.3);
+}
+.primary-btn:hover {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 209, 102, 0.5);
+}
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-fairy-gold);
+  border: 1px solid var(--glass-border);
+}
+.secondary-btn:hover {
+  background: rgba(255, 209, 102, 0.15);
+  border-color: var(--color-fairy-gold);
+}
+.gold-outline-btn {
+  background: transparent;
+  color: var(--color-fairy-gold);
+  border: 1px solid var(--color-fairy-gold);
+}
+.gold-outline-btn:hover {
+  background: var(--color-fairy-gold);
+  color: #071510;
+  transform: translateY(-2px);
+}
+.mini-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-fairy-gold);
+  border: 1px solid var(--glass-border);
+}
+
+/* ==========================================================================
+   1. HERO & WHITE RABBIT SECTION
+   ========================================================================== */
+.hero-wonder-section {
+  padding-top: 130px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Character Card (Left) */
+.hero-character-card {
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, rgba(14, 38, 29, 0.88) 0%, rgba(9, 21, 16, 0.96) 100%);
+}
+.card-ornament {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--color-fairy-gold);
+  opacity: 0.5;
+}
+.card-ornament.top-left { top: 14px; left: 14px; }
+.card-ornament.top-right { top: 14px; right: 14px; }
+
+/* Avatar Frame with Floral Glow */
+.avatar-frame-wonder {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  padding: 8px;
+  border: 2px solid var(--color-fairy-gold);
+  box-shadow: 0 0 25px rgba(255, 209, 102, 0.4), inset 0 0 15px rgba(124, 198, 254, 0.4);
+}
+.wonder-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 50%;
+  filter: saturate(1.05) contrast(1.02);
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.avatar-frame-wonder:hover .wonder-avatar-img {
+  transform: scale(1.05);
+}
+.floating-badge {
+  position: absolute;
+  background: rgba(7, 21, 16, 0.94);
+  border: 1px solid var(--color-fairy-gold);
+  color: var(--color-fairy-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  white-space: nowrap;
+}
+.badge-rabbit {
+  bottom: 0;
+  left: -20px;
+}
+.badge-french {
+  top: 10px;
+  right: -25px;
+}
+
+.royalty-badge {
+  display: inline-block;
+  background: rgba(255, 209, 102, 0.15);
+  border: 1px solid var(--color-fairy-gold);
+  color: var(--color-fairy-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.hero-name {
+  font-family: var(--font-serif-royal);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+.hero-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+.role-chip {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Language Greeting Box */
+.language-greeting-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.lang-title {
+  font-size: 0.82rem;
+  color: var(--color-fairy-gold);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+.lang-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.lang-pill {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+.lang-pill.active, .lang-pill:hover {
+  background: var(--color-sapphire);
+  color: #fff;
+  border-color: var(--color-fairy-gold);
+}
+.lang-quote-display {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-style: italic;
+  line-height: 1.55;
+  min-height: 65px;
+  border-left: 3px solid var(--color-fairy-gold);
+  padding-left: 10px;
+}
+
+/* Hero Contact Strip */
+.hero-contact-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.contact-pill {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.86rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: var(--trans-fast);
+}
+.contact-pill:hover {
+  background: rgba(255, 209, 102, 0.12);
+  color: var(--color-fairy-gold);
+  border-color: var(--color-fairy-gold);
+}
+.contact-pill i {
+  color: var(--color-fairy-gold);
+  width: 16px;
+}
+
+/* Right Narrative & Pocket Watch */
+.hero-narrative-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pocket-watch-panel {
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(29, 78, 137, 0.5) 0%, rgba(12, 28, 22, 0.85) 100%);
+  border: 1px solid var(--glass-border);
+}
+.watch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.rabbit-mascot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.rabbit-emoji {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 0 10px var(--color-fairy-gold));
+}
+.watch-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.25rem;
+  color: var(--color-fairy-gold);
+  font-weight: 800;
+}
+.watch-subtitle {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+.live-clock-wrapper {
+  text-align: right;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--color-fairy-gold);
+  padding: 10px 18px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 10px rgba(255, 209, 102, 0.2);
+}
+.clock-display {
+  font-family: var(--font-serif-royal);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+  letter-spacing: 1.5px;
+}
+.clock-date {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.watch-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.stat-pocket-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--glass-border);
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  transition: var(--trans-fast);
+}
+.stat-pocket-box:hover {
+  border-color: var(--color-fairy-gold);
+  transform: translateY(-2px);
+}
+.stat-number {
+  display: block;
+  font-family: var(--font-serif-royal);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+}
+.stat-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Storybook Bio */
+.storybook-bio {
+  padding: 32px 36px;
+}
+.chapter-header {
+  margin-bottom: 18px;
+}
+.chapter-num {
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-fairy-gold);
+  display: block;
+}
+.chapter-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: 800;
+}
+.chapter-body {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.dropcap {
+  float: left;
+  font-family: var(--font-serif-royal);
+  font-size: 3.4rem;
+  line-height: 0.85;
+  padding-right: 10px;
+  padding-top: 4px;
+  color: var(--color-fairy-gold);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.4);
+}
+
+.pedigree-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+.pedigree-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pedigree-icon {
+  font-size: 1.6rem;
+}
+.pedigree-info h4 {
+  font-size: 1rem;
+  color: var(--color-fairy-gold);
+}
+.pedigree-info p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.hero-cta-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   2. CHESHIRE CAT & AI SUPERPOWERS SECTION
+   ========================================================================== */
+.cheshire-header-block {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.cheshire-interactive-cat {
+  width: 170px;
+  height: 120px;
+  background: rgba(92, 32, 121, 0.45);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(142, 36, 170, 0.4);
+  transition: var(--trans-smooth);
+}
+.cheshire-interactive-cat:hover {
+  background: rgba(92, 32, 121, 0.8);
+  box-shadow: 0 0 35px rgba(255, 209, 102, 0.7);
+  transform: scale(1.06);
+}
+
+/* Glowing Cat Eyes */
+.cat-eyes {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 8px;
+}
+.eye {
+  width: 22px;
+  height: 14px;
+  background: #ffeb3b;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 12px #ffeb3b;
+  animation: catBlink 5s infinite;
+}
+.eye .pupil {
+  width: 6px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 8px;
+}
+@keyframes catBlink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+
+.grin-svg {
+  width: 130px;
+  height: 38px;
+}
+.grin-teeth-base {
+  fill: #fff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+.grin-line, .tooth-line {
+  stroke: #4a154b;
+  stroke-width: 2;
+}
+
+.cheshire-tooltip {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7, 21, 16, 0.95);
+  border: 1px solid var(--color-fairy-gold);
+  color: var(--color-fairy-gold);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.cheshire-interactive-cat:hover .cheshire-tooltip {
+  opacity: 1;
+}
+
+/* Skills Grid */
+.skills-grid-master {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.skill-category-card {
+  padding: 32px 30px;
+  position: relative;
+}
+.cat-corner-tag {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.ai-tag { background: rgba(142, 36, 170, 0.35); border: 1px solid #ba68c8; color: #e1bee7; }
+.design-tag { background: rgba(233, 30, 99, 0.3); border: 1px solid #f06292; color: #f8bbd0; }
+.office-tag { background: rgba(21, 101, 192, 0.3); border: 1px solid #64b5f6; color: #bbdefb; }
+.soft-tag { background: rgba(255, 179, 0, 0.3); border: 1px solid #ffd54f; color: #ffecb3; }
+
+.skill-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.cat-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.ai-icon-wrap { background: linear-gradient(135deg, #7b1fa2, #ba68c8); color: #fff; box-shadow: 0 0 15px rgba(186, 104, 200, 0.4); }
+.design-icon-wrap { background: linear-gradient(135deg, #c2185b, #f06292); color: #fff; box-shadow: 0 0 15px rgba(240, 98, 146, 0.4); }
+.office-icon-wrap { background: linear-gradient(135deg, #1565c0, #64b5f6); color: #fff; box-shadow: 0 0 15px rgba(100, 181, 246, 0.4); }
+.soft-icon-wrap { background: linear-gradient(135deg, #f57f17, #ffd54f); color: #000; box-shadow: 0 0 15px rgba(255, 213, 79, 0.4); }
+
+.skill-cat-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.skill-cat-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.skills-pill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.skill-orb {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+.skill-orb:hover {
+  background: rgba(255, 209, 102, 0.12);
+  border-color: var(--color-fairy-gold);
+  transform: translateX(6px);
+}
+.orb-icon {
+  font-size: 1.4rem;
+  color: var(--color-fairy-gold);
+  width: 32px;
+  text-align: center;
+}
+.orb-text {
+  flex: 1;
+}
+.orb-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+}
+.orb-level {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.orb-bar {
+  width: 80px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-sapphire), var(--color-fairy-gold));
+  border-radius: 3px;
+}
+
+/* Mini AI Playground Simulator */
+.mini-ai-box {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 16px;
+}
+.ai-box-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-fairy-gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.ai-pulse {
+  width: 8px;
+  height: 8px;
+  background: #00e676;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00e676;
+  animation: pulseLight 1.5s infinite;
+}
+@keyframes pulseLight {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+.ai-prompt-select {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.ai-chip-prompt {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+.ai-chip-prompt:hover {
+  background: var(--color-fairy-gold);
+  color: #071510;
+  font-weight: 600;
+}
+.ai-response-area {
+  background: rgba(14, 38, 29, 0.6);
+  border-radius: 10px;
+  padding: 10px 14px;
+  border-left: 3px solid #ba68c8;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.55;
+  min-height: 50px;
+}
+
+.creative-badge-callout {
+  background: rgba(255, 209, 102, 0.1);
+  border: 1px dashed var(--color-fairy-gold);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+}
+.trophy-badge {
+  font-family: var(--font-serif-royal);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+  margin-bottom: 4px;
+}
+.creative-badge-callout p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+/* Soft skills & Languages */
+.soft-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.soft-item {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.soft-icon {
+  font-size: 1.4rem;
+}
+.soft-text strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #fff;
+}
+.soft-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.languages-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lang-score-badge {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   3. MAD HATTER'S TEA PARTY (EXPERIENCE & TIMELINE)
+   ========================================================================== */
+.hatter-header-block {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.hatter-header-block .section-desc {
+  margin: 0 auto 24px;
+}
+
+.tea-party-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tea-filter-btn {
+  background: rgba(12, 28, 22, 0.8);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--trans-smooth);
+}
+.tea-filter-btn:hover, .tea-filter-btn.active {
+  background: linear-gradient(135deg, var(--color-sapphire), var(--color-mystic-violet));
+  color: #fff;
+  border-color: var(--color-fairy-gold);
+  box-shadow: 0 4px 15px rgba(255, 209, 102, 0.3);
+}
+
+/* Interactive Timeline Table */
+.mad-tea-table-wrapper {
+  position: relative;
+  padding: 40px 0;
+}
+.tea-timeline-nodes {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  position: relative;
+}
+.tea-timeline-nodes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 45px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-fairy-gold), var(--color-pansy-purple), var(--color-sapphire));
+  box-shadow: 0 0 10px var(--color-fairy-gold);
+}
+
+.tea-node {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 24px;
+  align-items: start;
+  transition: var(--trans-smooth);
+}
+.tea-node.hidden-filter {
+  display: none;
+}
+
+.teacup-anchor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.teacup-visual {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--color-fairy-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: #071510;
+  box-shadow: 0 0 15px rgba(255, 209, 102, 0.4);
+  transition: var(--trans-bounce);
+}
+.tea-node:hover .teacup-visual {
+  transform: scale(1.18) rotate(15deg);
+  box-shadow: 0 0 25px rgba(255, 209, 102, 0.8);
+}
+.cup-gold { background: linear-gradient(135deg, #ff8f00, #ffca28); }
+.cup-sapphire { background: linear-gradient(135deg, #1565c0, #42a5f5); }
+.cup-violet { background: linear-gradient(135deg, #6a1b9a, #ab47bc); }
+.cup-rose { background: linear-gradient(135deg, #c2185b, #f06292); }
+.cup-amber { background: linear-gradient(135deg, #2e7d32, #81c784); }
+
+.node-year {
+  font-family: var(--font-serif-royal);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+  margin-top: 6px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.tea-card-content {
+  padding: 28px 32px;
+  border-left: 4px solid var(--color-fairy-gold);
+}
+.card-teatime-badge {
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-fairy-gold);
+  margin-bottom: 4px;
+}
+.role-time-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-alice-blue);
+  background: rgba(124, 198, 254, 0.15);
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.role-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.org-title {
+  font-size: 1rem;
+  color: var(--color-fairy-gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.role-achievements-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.role-achievements-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.role-achievements-list li i {
+  margin-top: 4px;
+  color: var(--color-fairy-gold);
+}
+
+.role-metrics {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+.metric-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+.metric-box.highlight {
+  border-color: var(--color-fairy-gold);
+  background: rgba(255, 209, 102, 0.12);
+}
+.metric-val {
+  display: block;
+  font-family: var(--font-serif-royal);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+}
+.metric-lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Timeline & Award Photos Styling */
+.timeline-photo-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 14px 0 16px;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+  transition: var(--trans-smooth);
+}
+.timeline-photo-wrap.timeline-banner-wrap {
+  aspect-ratio: 4 / 1;
+}
+@media (max-width: 768px) {
+  .timeline-photo-wrap.timeline-banner-wrap {
+    aspect-ratio: 16 / 9;
+  }
+}
+.timeline-photo-wrap:hover {
+  border-color: var(--color-fairy-gold);
+  box-shadow: 0 8px 30px rgba(255, 209, 102, 0.45), 0 0 15px rgba(124, 198, 254, 0.3);
+  transform: translateY(-3px);
+}
+.timeline-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+.timeline-photo-wrap:hover .timeline-photo-img {
+  transform: scale(1.06);
+  filter: brightness(1.08) contrast(1.04);
+}
+.photo-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 21, 16, 0.94) 100%);
+  padding: 10px 14px 8px;
+  font-size: 0.8rem;
+  color: var(--color-fairy-gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+/* Award Card Photo Styling */
+.award-photo-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0 14px;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  transition: var(--trans-smooth);
+}
+.award-photo-wrap:hover {
+  border-color: var(--color-fairy-gold);
+  box-shadow: 0 6px 20px rgba(255, 209, 102, 0.4);
+}
+.award-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+.award-photo-wrap:hover .award-photo-img {
+  transform: scale(1.08);
+  filter: brightness(1.08);
+}
+
+/* ==========================================================================
+   4. QUEEN OF HEARTS & AWARDS SECTION
+   ========================================================================== */
+.queen-header-block {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.royal-hearts-banner {
+  font-size: 1.8rem;
+  letter-spacing: 12px;
+  color: var(--color-rose-crimson);
+  margin-bottom: 8px;
+}
+.queen-header-block .section-desc {
+  margin: 0 auto;
+}
+
+.royal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.royal-card-item {
+  background: linear-gradient(145deg, #11271e 0%, #071510 100%);
+  border: 2px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: var(--trans-bounce);
+  transform-style: preserve-3d;
+}
+.royal-card-item:hover {
+  transform: translateY(-12px) scale(1.03);
+  border-color: var(--color-fairy-gold);
+  box-shadow: 0 20px 45px rgba(255, 209, 102, 0.35);
+}
+
+.card-ace-hearts { border-color: rgba(233, 30, 99, 0.4); }
+.card-king-diamonds { border-color: rgba(255, 179, 0, 0.4); }
+.card-queen-spades { border-color: rgba(66, 165, 245, 0.4); }
+
+.card-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-serif-royal);
+  font-weight: 800;
+  line-height: 1;
+}
+.card-corner.top-left { top: 16px; left: 16px; }
+.card-corner.bottom-right { bottom: 16px; right: 16px; transform: rotate(180deg); }
+.card-rank { font-size: 1.4rem; color: #fff; }
+.card-suit { font-size: 1.2rem; }
+.card-ace-hearts .card-suit { color: var(--color-rose-crimson); }
+.card-king-diamonds .card-suit { color: #ffb300; }
+.card-queen-spades .card-suit { color: #64b5f6; }
+
+.card-center-crest {
+  text-align: center;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+.royal-seal {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b71c1c, #e91e63);
+  border: 2px solid var(--color-fairy-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 16px;
+  box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+}
+.seal-gold {
+  background: linear-gradient(135deg, #e65100, #ffb300);
+  box-shadow: 0 0 20px rgba(255, 179, 0, 0.5);
+}
+.seal-sapphire {
+  background: linear-gradient(135deg, #0d47a1, #1e88e5);
+  box-shadow: 0 0 20px rgba(30, 136, 229, 0.5);
+}
+
+.award-category {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--color-fairy-gold);
+  margin-bottom: 6px;
+}
+.award-name {
+  font-family: var(--font-serif-royal);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.award-level {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-alice-blue);
+  margin-bottom: 14px;
+}
+.award-detail-text {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.royal-ribbon {
+  display: inline-block;
+  background: linear-gradient(90deg, #b71c1c, #e91e63);
+  color: #fff;
+  font-family: var(--font-serif-royal);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--color-fairy-gold);
+  letter-spacing: 1px;
+}
+.ribbon-gold {
+  background: linear-gradient(90deg, #e65100, #ffb300);
+  color: #000;
+}
+.ribbon-sapphire {
+  background: linear-gradient(90deg, #0d47a1, #1e88e5);
+}
+
+/* Paint Roses Mini-Game */
+.paint-roses-game-box {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(183, 28, 28, 0.25) 0%, rgba(12, 28, 22, 0.85) 100%);
+  border: 1px solid rgba(233, 30, 99, 0.4);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.game-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-rose-crimson);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.game-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+}
+.game-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.roses-interactive-strip {
+  display: flex;
+  gap: 12px;
+}
+.rose-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--trans-bounce);
+}
+.rose-item:hover {
+  transform: scale(1.25) rotate(15deg);
+}
+.rose-item.painted-red {
+  background: rgba(233, 30, 99, 0.3);
+  border-color: #ff1744;
+  box-shadow: 0 0 15px #ff1744;
+}
+
+.game-status {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-fairy-gold);
+}
+
+/* ==========================================================================
+   5. CONTACT & LOOKING GLASS SECTION
+   ========================================================================== */
+.contact-master-card {
+  padding: 48px;
+  background: linear-gradient(145deg, rgba(14, 38, 29, 0.92) 0%, rgba(9, 21, 16, 0.98) 100%);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.magic-golden-key {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 15px var(--color-fairy-gold));
+  display: inline-block;
+  animation: floatKey 3s ease-in-out infinite;
+}
+@keyframes floatKey {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+.contact-main-title {
+  font-family: var(--font-serif-royal);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.contact-pitch {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.direct-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.contact-row-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.row-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 209, 102, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-fairy-gold);
+  font-size: 1rem;
+}
+.row-content {
+  display: flex;
+  flex-direction: column;
+}
+.row-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.row-value {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.row-value.copyable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.row-value.copyable:hover {
+  color: var(--color-fairy-gold);
+}
+
+.social-charms-group {
+  display: flex;
+  gap: 12px;
+}
+.social-charm {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--color-fairy-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--trans-bounce);
+}
+.social-charm:hover {
+  background: var(--color-fairy-gold);
+  color: #071510;
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* Letterbox Form */
+.letterbox-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+}
+.letter-stamp {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 2px dashed var(--color-fairy-gold);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--color-fairy-gold);
+  font-family: var(--font-serif-royal);
+}
+.form-card-title {
+  font-family: var(--font-serif-royal);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-fairy-gold);
+  margin-bottom: 4px;
+}
+.form-card-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.wonderland-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  background: rgba(7, 21, 16, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: var(--trans-fast);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--color-fairy-gold);
+  box-shadow: 0 0 10px rgba(255, 209, 102, 0.3);
+}
+.send-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+}
+.form-notice {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.success-notice {
+  background: rgba(0, 230, 118, 0.2);
+  border: 1px solid #00e676;
+  color: #b9f6ca;
+}
+.form-notice.hidden {
+  display: none;
+}
+
+/* Footer */
+.wonder-footer {
+  text-align: center;
+  padding-top: 60px;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.footer-flora {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+.footer-flora .flower-icon {
+  margin: 0 6px;
+  display: inline-block;
+  animation: floatKey 4s ease-in-out infinite;
+}
+.copyright-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.footer-quote {
+  font-family: var(--font-serif-classic);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-fairy-gold);
+}
+
+/* Magic Toast */
+.magic-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(7, 21, 16, 0.95);
+  border: 1px solid var(--color-fairy-gold);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 209, 102, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+}
+.magic-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-grid-master {
+    grid-template-columns: 1fr;
+  }
+  .royal-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .wonderland-nav {
+    padding: 10px 16px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .audio-control-hub {
+    top: auto;
+    bottom: 20px;
+    right: 16px;
+  }
+  .portal-title .title-main {
+    font-size: 2rem;
+  }
+  .hero-wonder-section {
+    padding-top: 90px;
+  }
+  .tea-timeline-nodes::before {
+    left: 25px;
+  }
+  .tea-node {
+    grid-template-columns: 50px 1fr;
+    gap: 14px;
+  }
+  .teacup-visual {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+  .contact-master-card {
+    padding: 24px;
+  }
+}
+</style>
+</head>
+<body class="wonderland-theme">
+
+  <!-- Canvas for Floating Magic Elements & Sparkles -->
+  <canvas id="magic-canvas"></canvas>
+
+  <!-- Custom Magical Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <div class="cursor-pointer">✨</div>
+    <div class="cursor-trail"></div>
+  </div>
+
+  <!-- Audio Control Floating Bar -->
+  <div class="audio-control-hub">
+    <button id="audio-toggle-btn" class="magical-icon-btn" title="Bật / Tắt Nhạc Xứ Sở Thần Tiên (Fairytale Sound)">
+      <span class="btn-glow"></span>
+      <i class="fa-solid fa-music"></i>
+      <span class="sound-waves">
+        <span class="wave"></span><span class="wave"></span><span class="wave"></span>
+      </span>
+      <span class="sound-label">Wonderland Lo-fi</span>
+    </button>
+    <button id="sfx-toggle-btn" class="magical-icon-btn sfx-btn active" title="Bật / Tắt Hiệu ứng Âm thanh (SFX)">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span class="sfx-label">SFX: Bật</span>
+    </button>
+  </div>
+
+  <!-- Navigation Quick-Links -->
+  <nav class="wonderland-nav" id="main-nav">
+    <div class="nav-brand">
+      <span class="brand-crown">✨</span>
+      <span class="brand-name">Hoài An</span>
+      <span class="brand-subtitle">Le Pays des Merveilles</span>
+    </div>
+    <div class="nav-links">
+      <a href="#hero-section" class="nav-item active" data-target="hero-section">
+        <span class="nav-icon">🐇</span> Thỏ Trắng
+      </a>
+      <a href="#skills-section" class="nav-item" data-target="skills-section">
+        <span class="nav-icon">🐱</span> Mèo Cheshire
+      </a>
+      <a href="#experience-section" class="nav-item" data-target="experience-section">
+        <span class="nav-icon">🎩</span> Bữa Tiệc Trà
+      </a>
+      <a href="#awards-section" class="nav-item" data-target="awards-section">
+        <span class="nav-icon">♥️</span> Nữ Hoàng Cơ
+      </a>
+      <a href="#contact-section" class="nav-item" data-target="contact-section">
+        <span class="nav-icon">🔑</span> Chiếc Chìa Khóa
+      </a>
+    </div>
+    <div class="nav-actions">
+      <button class="wonder-btn mini-btn" id="portal-return-btn" title="Quay lại Hang Thỏ (Rabbit Hole)">
+        <i class="fa-solid fa-rotate-left"></i> Hang Thỏ
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================== -->
+  <!-- SECTION A: THE RABBIT HOLE ENTRANCE (INTRO SCREEN) -->
+  <!-- ============================================================== -->
+  <section id="rabbit-hole-intro" class="rabbit-hole-container">
+    <div class="vortex-background">
+      <div class="vortex-ring ring-1"></div>
+      <div class="vortex-ring ring-2"></div>
+      <div class="vortex-ring ring-3"></div>
+      <div class="vortex-ring ring-4"></div>
+      <div class="tunnel-grid"></div>
+    </div>
+
+    <!-- Floating wonderland debris in the falling hole -->
+    <div class="falling-debris-layer">
+      <div class="debris-item debris-clock"><i class="fa-regular fa-clock"></i></div>
+      <div class="debris-item debris-card card-spade">♠</div>
+      <div class="debris-item debris-card card-heart">♥</div>
+      <div class="debris-item debris-tea">🫖</div>
+      <div class="debris-item debris-cup">☕</div>
+      <div class="debris-item debris-key">🗝️</div>
+      <div class="debris-item debris-book">📖</div>
+      <div class="debris-item debris-cat-grin">😺</div>
+      <div class="debris-item debris-mirror">🪞</div>
+    </div>
+
+    <!-- Intro Center Content -->
+    <div class="intro-glass-portal">
+      <div class="portal-header">
+        <span class="rabbit-tag">Curiouser and Curiouser! 🐇</span>
+        <h1 class="portal-title">
+          <span class="title-sub">Chào Mừng Bạn Đến Với Không Gian Sáng Tạo & Trải Nghiệm Của</span>
+          <span class="title-main glow-gold">Nguyễn Hoài An</span>
+        </h1>
+        <p class="portal-desc">
+          "Nếu bạn không biết mình muốn đi đâu, thì con đường nào cũng sẽ đưa bạn đến đó."<br>
+          <span class="quote-author">— Chú Mèo Cheshire, Xứ Sở Thần Tiên —</span>
+        </p>
+      </div>
+
+      <div class="wonderland-potions-group">
+        <div class="potion-card drink-me" id="drink-me-potion" role="button" tabindex="0">
+          <div class="potion-aura"></div>
+          <div class="potion-bottle">
+            <div class="cork"></div>
+            <div class="bottle-neck"></div>
+            <div class="bottle-body">
+              <div class="liquid sapphire-liquid">
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+              </div>
+              <div class="potion-tag-label">DRINK ME</div>
+            </div>
+          </div>
+          <div class="potion-callout">
+            <span class="btn-sparkle">✨</span>
+            <span class="potion-text">Uống Lọ Thần Dược</span>
+            <span class="potion-subtext">Khám phá Năng lực & Giá trị cá nhân</span>
+          </div>
+        </div>
+
+        <div class="potion-card eat-me" id="eat-me-cake" role="button" tabindex="0">
+          <div class="potion-aura"></div>
+          <div class="cake-box">
+            <div class="cherry">🍒</div>
+            <div class="cake-frosting">
+              <span class="frosting-text">EAT ME</span>
+            </div>
+            <div class="cake-base"></div>
+          </div>
+          <div class="potion-callout">
+            <span class="btn-sparkle">🎂</span>
+            <span class="potion-text">Nếm Chiếc Bánh Ngọt</span>
+            <span class="potion-subtext">Mở Cánh Cổng Thần Kỳ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-hint-bar">
+        <span class="hint-text"><i class="fa-solid fa-sparkles"></i> Nhấp vào <strong>"DRINK ME"</strong> hoặc <strong>"EAT ME"</strong> để bước vào Xứ Sở Thần Tiên</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- MAIN WONDERLAND PORTFOLIO HUB -->
+  <!-- ============================================================== -->
+  <main id="wonderland-main" class="wonderland-main-hub hidden">
+
+    <!-- ============================================================ -->
+    <!-- 1. WHITE RABBIT & TIME (HERO & GENERAL INFO) -->
+    <!-- ============================================================ -->
+    <section id="hero-section" class="wonder-section hero-wonder-section">
+      <div class="curved-banner-top"></div>
+      <div class="section-container">
+        
+        <div class="hero-grid">
+          <!-- Left: Profile & Personal Identity Card -->
+          <div class="hero-character-card glass-panel" data-tilt>
+            <div class="card-ornament top-left">⚜️</div>
+            <div class="card-ornament top-right">⚜️</div>
+            
+            <div class="avatar-frame-wonder">
+              <div class="golden-circlet"></div>
+              <div class="avatar-glow"></div>
+              <img src="https://lh3.googleusercontent.com/d/1BABAUJHO30nUinN5dzg2eHSfB0K70Tmp" onerror="this.onerror=null; this.src='./images/1. ảnh profile.jpg';" alt="Nguyễn Hoài An - Profile" class="wonder-avatar-img">
+              <div class="floating-badge badge-rabbit">
+                <span>🐇 FTU K62</span>
+              </div>
+              <div class="floating-badge badge-french">
+                <span>🇫🇷 Commercial French</span>
+              </div>
+            </div>
+
+            <div class="hero-identity">
+              <span class="royalty-badge"><i class="fa-solid fa-sparkles"></i> Sinh Viên Ngoại Thương & Người Sáng Tạo</span>
+              <h1 class="hero-name">Nguyễn Hoài An</h1>
+              <div class="hero-roles">
+                <span class="role-chip">✨ Sinh viên năm 3 - ĐH Ngoại Thương</span>
+                <span class="role-chip">🇫🇷 Chuyên ngành: Tiếng Pháp Thương Mại</span>
+                <span class="role-chip">🎨 Tư duy Tổ chức, Sáng tạo & Ứng dụng AI</span>
+              </div>
+            </div>
+
+            <!-- Language Greetings Toggle -->
+            <div class="language-greeting-box">
+              <span class="lang-title"><i class="fa-solid fa-language"></i> Lời chào đa ngôn ngữ:</span>
+              <div class="lang-tabs">
+                <button class="lang-pill active" data-lang="vi">🇻🇳 Tiếng Việt</button>
+                <button class="lang-pill" data-lang="fr">🇫🇷 Français</button>
+                <button class="lang-pill" data-lang="en">🇬🇧 English</button>
+              </div>
+              <div class="lang-quote-display" id="greeting-text">
+                "Chào bạn! Tôi là Hoài An. Tôi luôn chủ động, trách nhiệm và sẵn sàng học hỏi để tạo ra giá trị thiết thực trong mỗi dự án."
+              </div>
+            </div>
+
+            <!-- Quick Contacts Bar -->
+            <div class="hero-contact-strip">
+              <a href="tel:0838818890" class="contact-pill" title="Gọi điện thoại">
+                <i class="fa-solid fa-phone"></i> 0838 818 890
+              </a>
+              <a href="mailto:nhoaian2712@gmail.com" class="contact-pill" title="Gửi Email">
+                <i class="fa-solid fa-envelope"></i> nhoaian2712@gmail.com
+              </a>
+              <span class="contact-pill location-pill" title="Địa chỉ">
+                <i class="fa-solid fa-location-dot"></i> Thanh Xuân, Hà Nội
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: White Rabbit & Live Pocket Watch & Bio -->
+          <div class="hero-narrative-card">
+            
+            <!-- Vintage Pocket Watch Widget -->
+            <div class="pocket-watch-panel glass-panel">
+              <div class="watch-header">
+                <div class="rabbit-mascot">
+                  <span class="rabbit-emoji">🐇⏱️</span>
+                  <div>
+                    <h3 class="watch-title">Đồng Hồ Quả Quýt Của Thỏ Trắng</h3>
+                    <p class="watch-subtitle">"Thời gian là nguồn tài nguyên quý giá nhất để tích lũy giá trị và tri thức"</p>
+                  </div>
+                </div>
+                <div class="live-clock-wrapper">
+                  <div class="clock-display" id="live-pocket-time">14:00:00</div>
+                  <div class="clock-date" id="live-pocket-date">Thứ Sáu, Ngày 02 Tháng 10, 2026</div>
+                </div>
+              </div>
+
+              <!-- Refocused Stats Row: Highlight core credentials and capabilities -->
+              <div class="watch-stats-row">
+                <div class="stat-pocket-box">
+                  <span class="stat-number">2023 - Hiện tại</span>
+                  <span class="stat-desc">Đại học Ngoại Thương (FTU)</span>
+                </div>
+                <div class="stat-pocket-box">
+                  <span class="stat-number">2021 - 2022</span>
+                  <span class="stat-desc">Chứng chỉ Quốc tế MOS Master</span>
+                </div>
+                <div class="stat-pocket-box">
+                  <span class="stat-number">Sáng Tạo & Đa Năng</span>
+                  <span class="stat-desc">Tư duy Logic & Ứng dụng AI</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bio Storybook Card: Focused on Personal Values, Mindset & Work Ethic -->
+            <div class="storybook-bio glass-panel">
+              <div class="chapter-header">
+                <span class="chapter-num">Chương I</span>
+                <h2 class="chapter-title">Tư Duy, Giá Trị & Định Hướng Cá Nhân</h2>
+              </div>
+              <div class="chapter-body">
+                <p class="lead-bio">
+                  <span class="dropcap">T</span>hông qua quá trình học tập tại <strong>Trường Đại học Ngoại thương (FTU)</strong> cùng các hoạt động thực tiễn, tôi đã không ngừng rèn luyện và hoàn thiện <em>kỹ năng lập kế hoạch, điều phối, làm việc nhóm và giải quyết vấn đề</em> một cách linh hoạt, hiệu quả.
+                </p>
+                <p class="sub-bio">
+                  Tôi luôn giữ tinh thần <strong>chủ động, trách nhiệm và sẵn sàng học hỏi</strong> những công nghệ mới như các mô hình AI hiện đại, kết hợp cùng năng lực ngôn ngữ Tiếng Pháp thương mại để mang lại giá trị cao nhất cho mỗi công việc và dự án mà mình tham gia.
+                </p>
+              </div>
+
+              <!-- Academic Pedigree Timeline -->
+              <div class="pedigree-box">
+                <div class="pedigree-item">
+                  <div class="pedigree-icon">🎓</div>
+                  <div class="pedigree-info">
+                    <h4>Trường Đại Học Ngoại Thương (FTU)</h4>
+                    <p>Sinh viên năm 3 | Chuyên ngành: <strong>Tiếng Pháp Thương Mại</strong> (2023 - Hiện tại)</p>
+                  </div>
+                </div>
+                <div class="pedigree-item">
+                  <div class="pedigree-icon">🏫</div>
+                  <div class="pedigree-info">
+                    <h4>Trường THPT Phan Đình Phùng</h4>
+                    <p>Cựu học sinh | Giai đoạn rèn luyện nền tảng truyền thông & sáng tạo (2020 - 2023)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Row -->
+              <div class="hero-cta-actions">
+                <a href="#experience-section" class="wonder-btn primary-btn">
+                  <span>🎩 Khám Phá Tiệc Trà Kinh Nghiệm</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#skills-section" class="wonder-btn secondary-btn">
+                  <span>🐱 Xem Kỹ Năng & Công Cụ AI</span>
+                </a>
+                <button id="download-cv-btn" class="wonder-btn gold-outline-btn">
+                  <i class="fa-solid fa-scroll"></i> Lưu / In Hồ Sơ (CV)
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2. CHESHIRE CAT & AI FOREST (SKILLS & SUPERPOWERS) -->
+    <!-- ============================================================ -->
+    <section id="skills-section" class="wonder-section cheshire-wonder-section">
+      <div class="section-decor decor-mushrooms">🍄</div>
+      <div class="section-decor decor-caterpillar">🐛</div>
+
+      <div class="section-container">
+        
+        <!-- Section Header with Cheshire Cat Grin & Glowing Eyes -->
+        <div class="cheshire-header-block">
+          <div class="cheshire-interactive-cat" id="cheshire-cat-interactive">
+            <div class="cat-eyes">
+              <div class="eye left-eye"><div class="pupil"></div></div>
+              <div class="eye right-eye"><div class="pupil"></div></div>
+            </div>
+            <div class="cat-glow-grin">
+              <svg viewBox="0 0 200 60" class="grin-svg">
+                <path d="M 10,20 Q 100,70 190,20 Q 100,50 10,20 Z" class="grin-teeth-base" />
+                <path d="M 20,24 Q 100,60 180,24" class="grin-line" />
+                <line x1="45" y1="23" x2="45" y2="35" class="tooth-line" />
+                <line x1="75" y1="26" x2="75" y2="44" class="tooth-line" />
+                <line x1="105" y1="27" x2="105" y2="48" class="tooth-line" />
+                <line x1="135" y1="26" x2="135" y2="44" class="tooth-line" />
+                <line x1="165" y1="23" x2="165" y2="35" class="tooth-line" />
+              </svg>
+            </div>
+            <div class="cheshire-tooltip">"Rê chuột vào các kỹ năng để khám phá chi tiết!"</div>
+          </div>
+
+          <div class="section-title-wrap">
+            <span class="section-subtitle">Chương II: Khu Rừng Trí Tuệ</span>
+            <h2 class="section-title">Năng Lực Chuyên Môn & Kỹ Năng Số</h2>
+            <p class="section-desc">
+              Sự kết hợp giữa tư duy làm việc khoa học, chứng chỉ tin học quốc tế, óc thẩm mỹ thiết kế và khả năng ứng dụng các công nghệ AI tiên tiến vào công việc hàng ngày.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Skill Categories -->
+        <div class="skills-grid-master">
+          
+          <!-- Category 1: AI Superpowers -->
+          <div class="skill-category-card glass-panel" data-cat="ai">
+            <div class="cat-corner-tag ai-tag">✨ Ứng Dụng AI</div>
+            <div class="skill-cat-header">
+              <div class="cat-icon-wrap ai-icon-wrap">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Trí Tuệ Nhân Tạo & Tối Ưu Năng Suất</h3>
+                <p class="skill-cat-desc">Nghiên cứu tài liệu, tự động hóa tác vụ và xây dựng nội dung</p>
+              </div>
+            </div>
+
+            <div class="skills-pill-list">
+              <div class="skill-orb" data-skill="ChatGPT" data-desc="Tạo dàn ý nội dung, lên khung đề xuất sự kiện, hỗ trợ soạn thảo văn bản và tư duy phản biện." data-level="95%">
+                <div class="orb-icon"><i class="fa-solid fa-robot"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">ChatGPT</span>
+                  <span class="orb-level">Prompt Engineering & Content Strategy</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 95%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="Gemini" data-desc="Nghiên cứu dữ liệu đa phương thức, tổng hợp tài liệu chuyên ngành và phân tích số liệu." data-level="90%">
+                <div class="orb-icon"><i class="fa-solid fa-gem"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Google Gemini</span>
+                  <span class="orb-level">Multimodal Research & Analysis</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 90%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="Claude" data-desc="Biên tập văn bản chuyên sâu (Tiếng Việt, Tiếng Pháp, Tiếng Anh), xử lý logic tài liệu học thuật." data-level="92%">
+                <div class="orb-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Claude AI</span>
+                  <span class="orb-level">Logic Writing & Language Refinement</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 92%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Mini Interactive AI Prompt Playground -->
+            <div class="mini-ai-box">
+              <div class="ai-box-header">
+                <span class="ai-pulse"></span>
+                <span>Khám phá nhanh về Hoài An qua Trợ lý AI:</span>
+              </div>
+              <div class="ai-box-body">
+                <div class="ai-prompt-select">
+                  <button class="ai-chip-prompt" data-q="fit">Thế mạnh cá nhân của Hoài An?</button>
+                  <button class="ai-chip-prompt" data-q="experience">Kinh nghiệm tổ chức & điều phối?</button>
+                  <button class="ai-chip-prompt" data-q="french">Khả năng ngoại ngữ Tiếng Pháp?</button>
+                </div>
+                <div class="ai-response-area" id="ai-response-box">
+                  <p class="ai-text-reply">Nhấp vào một câu hỏi ở trên để xem phản hồi chi tiết...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Design & Media -->
+          <div class="skill-category-card glass-panel" data-cat="design">
+            <div class="cat-corner-tag design-tag">🎨 Thiết Kế & Sáng Tạo</div>
+            <div class="skill-cat-header">
+              <div class="cat-icon-wrap design-icon-wrap">
+                <i class="fa-solid fa-palette"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Thiết Kế & Xử Lý Đa Phương Tiện</h3>
+                <p class="skill-cat-desc">Sản xuất ấn phẩm truyền thông, bố cục thị giác & video</p>
+              </div>
+            </div>
+
+            <div class="skills-pill-list">
+              <div class="skill-orb" data-skill="Illustrator" data-desc="Thiết kế vector, ấn phẩm truyền thông, poster, banner và tài liệu định dạng chuẩn in ấn." data-level="88%">
+                <div class="orb-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Adobe Illustrator</span>
+                  <span class="orb-level">Vector Visuals & Layout</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 88%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="Canva" data-desc="Xây dựng bộ template truyền thông xã hội nhất quán, slide báo cáo và ấn phẩm số." data-level="96%">
+                <div class="orb-icon"><i class="fa-solid fa-wand-magic"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Canva</span>
+                  <span class="orb-level">Social Visuals & Presentation Decks</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 96%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="CapCut" data-desc="Biên tập và dựng video ngắn phục vụ truyền thông tuyển sinh, recap hoạt động và nội dung mạng xã hội." data-level="90%">
+                <div class="orb-icon"><i class="fa-solid fa-video"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">CapCut</span>
+                  <span class="orb-level">Video Editing & Short-form Content</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 90%;"></div></div>
+              </div>
+            </div>
+
+            <div class="creative-badge-callout">
+              <div class="trophy-badge">🏆 Chứng Chỉ Quốc Tế MOS (2021 - 2022)</div>
+              <p>Thành thạo trọn bộ Microsoft Office (Word, Excel, PowerPoint) với chứng chỉ quốc tế chính thức.</p>
+            </div>
+          </div>
+
+          <!-- Category 3: Office & MOS Certification -->
+          <div class="skill-category-card glass-panel" data-cat="office">
+            <div class="cat-corner-tag office-tag">📊 Tin Học Văn Phòng</div>
+            <div class="skill-cat-header">
+              <div class="cat-icon-wrap office-icon-wrap">
+                <i class="fa-solid fa-file-excel"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Tin Học Văn Phòng (MOS 2021 - 2022)</h3>
+                <p class="skill-cat-desc">Xử lý dữ liệu, chuẩn hóa văn bản hành chính & slide thuyết trình</p>
+              </div>
+            </div>
+
+            <div class="skills-pill-list">
+              <div class="skill-orb" data-skill="Word" data-desc="Soạn thảo văn bản hành chính, tờ trình, đề án dự án và tài liệu nghiên cứu chuẩn chỉ." data-level="95%">
+                <div class="orb-icon"><i class="fa-solid fa-file-word"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Microsoft Word (MOS)</span>
+                  <span class="orb-level">Văn Bản Hành Chính & Đề Án</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 95%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="Excel" data-desc="Xử lý bảng tính, sàng lọc dữ liệu tuyển sinh, thống kê báo cáo với các hàm phân tích nâng cao." data-level="92%">
+                <div class="orb-icon"><i class="fa-solid fa-file-excel"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Microsoft Excel (MOS)</span>
+                  <span class="orb-level">Xử Lý Bảng Tính & Dữ Liệu</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 92%;"></div></div>
+              </div>
+
+              <div class="skill-orb" data-skill="PowerPoint" data-desc="Thiết kế slide thuyết trình mạch lạc, slide pitching ý tưởng khởi nghiệp và báo cáo dự án." data-level="96%">
+                <div class="orb-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+                <div class="orb-text">
+                  <span class="orb-name">Microsoft PowerPoint (MOS)</span>
+                  <span class="orb-level">Slide Thuyết Trình & Pitching Deck</span>
+                </div>
+                <div class="orb-bar"><div class="bar-fill" style="width: 96%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Soft Skills & Languages -->
+          <div class="skill-category-card glass-panel" data-cat="soft">
+            <div class="cat-corner-tag soft-tag">🌟 Kỹ Năng & Ngôn Ngữ</div>
+            <div class="skill-cat-header">
+              <div class="cat-icon-wrap soft-icon-wrap">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Năng Lực Cá Nhân & Ngôn Ngữ</h3>
+                <p class="skill-cat-desc">Khả năng thích ứng, làm việc nhóm và giao tiếp đa văn hóa</p>
+              </div>
+            </div>
+
+            <div class="soft-skills-grid">
+              <div class="soft-item">
+                <span class="soft-icon">🤝</span>
+                <div class="soft-text">
+                  <strong>Làm việc nhóm & Giao tiếp</strong>
+                  <span>Lắng nghe, thấu hiểu và phối hợp nhịp nhàng</span>
+                </div>
+              </div>
+              <div class="soft-item">
+                <span class="soft-icon">🎯</span>
+                <div class="soft-text">
+                  <strong>Tổ chức & Sắp xếp công việc</strong>
+                  <span>Quản lý thời gian, bám sát checklist tỉ mỉ</span>
+                </div>
+              </div>
+              <div class="soft-item">
+                <span class="soft-icon">💡</span>
+                <div class="soft-text">
+                  <strong>Sáng tạo & Đổi mới</strong>
+                  <span>Đưa ra ý tưởng mới và giải pháp thực tế</span>
+                </div>
+              </div>
+              <div class="soft-item">
+                <span class="soft-icon">⚡</span>
+                <div class="soft-text">
+                  <strong>Trách nhiệm & Chủ động</strong>
+                  <span>Tự giác học hỏi và cam kết chất lượng đầu ra</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="languages-bar-wrap">
+              <div class="lang-score-badge">
+                <span class="flag">🇻🇳</span>
+                <span>Tiếng Việt (Ngôn ngữ mẹ đẻ)</span>
+              </div>
+              <div class="lang-score-badge">
+                <span class="flag">🇫🇷</span>
+                <span>Tiếng Pháp (Chuyên ngành Thương mại)</span>
+              </div>
+              <div class="lang-score-badge">
+                <span class="flag">🇬🇧</span>
+                <span>Tiếng Anh (Giao tiếp & Làm việc tốt)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. MAD HATTER'S TEA PARTY (EXPERIENCE & LEARNING JOURNEY) -->
+    <!-- ============================================================ -->
+    <section id="experience-section" class="wonder-section hatter-wonder-section">
+      <div class="section-decor decor-tophat">🎩</div>
+      <div class="section-decor decor-teapot">🫖</div>
+
+      <div class="section-container">
+        
+        <div class="hatter-header-block">
+          <span class="section-subtitle">Chương III: Hành Trình Trải Nghiệm</span>
+          <h2 class="section-title">Bữa Tiệc Trà Kinh Nghiệm Của Thợ Làm Mũ Điên</h2>
+          <p class="section-desc">
+            Mỗi cột mốc là một tách trà đậm đà những bài học thực tiễn, phản ánh sự trưởng thành và tinh thần dấn thân của tôi qua từng giai đoạn học tập.
+          </p>
+
+          <!-- Timeline Filter Controls -->
+          <div class="tea-party-filters">
+            <button class="tea-filter-btn active" data-filter="all">☕ Toàn Bộ Bàn Tiệc</button>
+            <button class="tea-filter-btn" data-filter="ftu-leadership">🏛️ Diễn Đàn Sinh Viên (FTU Forum)</button>
+            <button class="tea-filter-btn" data-filter="admissions">🎓 Tuyển Sinh & Đào Tạo FTU</button>
+            <button class="tea-filter-btn" data-filter="community">🌐 Truyền Thông & Cộng Đồng</button>
+            <button class="tea-filter-btn" data-filter="highschool">🏫 Giai Đoạn Cấp 3 (PDP)</button>
+          </div>
+        </div>
+
+        <!-- The Mad Hatter Interactive Timeline Table -->
+        <div class="mad-tea-table-wrapper">
+          <div class="tea-table-runner"></div>
+
+          <div class="tea-timeline-nodes">
+
+            <!-- Node 1: Chủ tịch CLB Diễn đàn Sinh viên FTU Forum & Ngày hội Tuyển sinh FTU 2026 -->
+            <div class="tea-node ftu-leadership admissions active" data-year="2025 - 2026">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-gold">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">✨</div>
+                </div>
+                <span class="node-year">2025 - 2026</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Trải Nghiệm Tại Đại Học Ngoại Thương</div>
+                <div class="role-time-tag">2025 - 2026 • Hiện tại</div>
+                <h3 class="role-title">Chủ Tịch Câu Lạc Bộ</h3>
+                <h4 class="org-title">CLB Diễn Đàn Sinh Viên Trường ĐH Ngoại Thương (FTU Forum)</h4>
+
+                <div class="timeline-photo-wrap">
+                  <img src="./images/2. Chủ tịch CLB.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1_ZU-QnpB5K19vBm64K4UCY1QcA36Lwi6';" alt="Chủ tịch CLB - Ngày hội Tuyển sinh FTU 2026" class="timeline-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 Ngày Hội Tuyển Sinh FTU 2026</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Tổ chức Ngày Hội Tuyển sinh FTU 2026:</strong> Trực tiếp thực hiện, điều phối và tổ chức dự án trọng điểm này trên cương vị là <strong>Chủ tịch</strong>, đảm bảo chương trình diễn ra chỉn chu, an toàn và đạt hiệu quả tiếp cận cao.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Quản trị & Định hướng dự án:</strong> Điều phối toàn diện các chương trình, dự án Tình nguyện và Tuyển sinh của Nhà trường, xây dựng kế hoạch hành động chi tiết và phân công công việc hiệu quả.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Kết nối & Phát triển nhân sự:</strong> Tạo dựng môi trường làm việc cởi mở, khuyến khích sáng tạo và tinh thần trách nhiệm của từng thành viên trong tổ chức.</span>
+                  </li>
+                </ul>
+
+                <div class="role-metrics">
+                  <div class="metric-box">
+                    <span class="metric-val">Chủ Động</span>
+                    <span class="metric-lbl">Tư Duy Giải Quyết Vấn Đề</span>
+                  </div>
+                  <div class="metric-box highlight">
+                    <span class="metric-val">Chủ Tịch</span>
+                    <span class="metric-lbl">Tổ Chức Ngày Hội Tuyển Sinh 2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Node 2: Trưởng Ban Tổ Chức các dự án sự kiện Tình nguyện & Tuyển sinh (2024 - 2025) -->
+            <div class="tea-node ftu-leadership admissions active" data-year="2024 - 2025">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-sapphire">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">🎯</div>
+                </div>
+                <span class="node-year">2024 - 2025</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Trải Nghiệm Tại Đại Học Ngoại Thương</div>
+                <div class="role-time-tag">2024 - 2025</div>
+                <h3 class="role-title">Trưởng Ban Tổ Chức</h3>
+                <h4 class="org-title">Các Dự Án, Chương Trình Sự Kiện Tình Nguyện & Tuyển Sinh FTU</h4>
+
+                <div class="timeline-photo-wrap">
+                  <img src="./images/3. Trưởng BTC.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1AFafgxLfuefYZLAL5joiMwBwn-Jf-Ffx';" alt="Trưởng BTC - Sự kiện tình nguyện & tuyển sinh" class="timeline-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 Chương trình tình nguyện Mùa Gió Ấm 2026</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Lập kế hoạch & Điều phối chương trình:</strong> Xây dựng timeline, phân bổ ngân sách, quản trị rủi ro và điều phối nhịp nhàng giữa các ban Hậu cần, Truyền thông, Đối ngoại.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Chuỗi hoạt động Tình nguyện:</strong> Tổ chức các chiến dịch thiện nguyện thiết thực, lan tỏa tinh thần nhiệt huyết và trách nhiệm cộng đồng của sinh viên FTU.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Quản lý tiến độ:</strong> Đảm bảo toàn bộ các hạng mục sự kiện được triển khai đúng hạn với chất lượng tối ưu.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Node 3: Cộng tác viên Phòng Quản lý Đào tạo FTU (2025) -->
+            <div class="tea-node admissions active" data-year="2025">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-violet">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">🏛️</div>
+                </div>
+                <span class="node-year">2025</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Công Việc Hành Chính & Chuyên Môn</div>
+                <div class="role-time-tag">2025</div>
+                <h3 class="role-title">Cộng Tác Viên Phòng Quản Lý Đào Tạo</h3>
+                <h4 class="org-title">Trường Đại Học Ngoại Thương</h4>
+
+                <div class="timeline-photo-wrap">
+                  <img src="./images/4. CTV Phòng QLĐT.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1gacZBM0mLP2UtkEAE8-QZGs958GgfsJA';" alt="CTV Phòng Quản lý Đào tạo FTU" class="timeline-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 Tư vấn & Điều phối công tác Tuyển sinh FTU</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Tư vấn tuyển sinh:</strong> Trực tiếp giải đáp thắc mắc, tư vấn chính xác và tận tình cho phụ huynh, học sinh về các phương thức tuyển sinh Đại học chính quy.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Kiểm tra & Sàng lọc hồ sơ:</strong> Hỗ trợ rà soát, đối chiếu và chuẩn hóa dữ liệu hồ sơ xét tuyển với tính cẩn trọng, tỉ mỉ và bảo mật cao.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Hỗ trợ truyền thông:</strong> Tham gia quản lý và điều phối các kênh thông tin tuyển sinh chính thức của Nhà trường.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Node 4: Xây dựng & Quản trị Cộng đồng Facebook K65 FTU (14K thành viên) -->
+            <div class="tea-node community active" data-year="2024 - 2025">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-rose">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">🌐</div>
+                </div>
+                <span class="node-year">2024 - 2025</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Truyền Thông & Kết Nối</div>
+                <div class="role-time-tag">2024 - 2025</div>
+                <h3 class="role-title">Quản Trị & Phát Triển Nội Dung Cộng Đồng</h3>
+                <h4 class="org-title">Group Facebook: K65 FTU (2008) - Ignite Your Sun! (14K Thành Viên)</h4>
+
+                <div class="timeline-photo-wrap timeline-banner-wrap">
+                  <img src="./images/5. Quản trị và phát triển.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1CqPmCP5T1ZmAg_hi9dP_qvj9-oWgwLiC';" alt="Quản trị Group K65 FTU Ignite Your Sun" class="timeline-photo-img banner-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 K65 FTUERS - Ignite Your Sun! (14K Thành Viên)</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Xây dựng cộng đồng quy mô 14K thành viên:</strong> Phát triển và quản trị cộng đồng Group Facebook K65 FTU thu hút <strong>14.000+ thành viên (14K)</strong> tham gia sôi nổi, tạo môi trường kết nối văn minh và tích cực cho các bạn học sinh lớp 12 hướng về FTU.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Sáng tạo nội dung định hướng:</strong> Lên ý tưởng và biên soạn các bài viết chia sẻ kinh nghiệm ôn thi, thông tin tuyển sinh, văn hóa học đường Ngoại thương và phương pháp học tập.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Kỹ năng lắng nghe & thấu hiểu:</strong> Nắm bắt tâm lý của thế hệ học sinh tương lai để điều phối nội dung truyền thông và giải đáp thắc mắc kịp thời.</span>
+                  </li>
+                </ul>
+
+                <div class="role-metrics">
+                  <div class="metric-box highlight">
+                    <span class="metric-val">14.000+</span>
+                    <span class="metric-lbl">Thành Viên Group K65 FTU</span>
+                  </div>
+                  <div class="metric-box">
+                    <span class="metric-val">Tương Tác Cao</span>
+                    <span class="metric-lbl">Cộng Đồng Học Tập Tích Cực</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Node 5: Thành viên Ban Tổ Chức FTU Forum (TÁCH BIỆT RÕ RÀNG) -->
+            <div class="tea-node ftu-leadership active" data-year="2023 - 2024">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-amber">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">🌱</div>
+                </div>
+                <span class="node-year">2023 - 2024</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Bước Khởi Đầu Tại Đại Học Ngoại Thương</div>
+                <div class="role-time-tag">2023 - 2024</div>
+                <h3 class="role-title">Thành Viên Ban Tổ Chức</h3>
+                <h4 class="org-title">CLB Diễn Đàn Sinh Viên Trường ĐH Ngoại Thương (FTU Forum)</h4>
+
+                <div class="timeline-photo-wrap">
+                  <img src="./images/6. Thành viên BTC.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1R07bjSSkkiKYuJuhjvONu6M4s4b5su31';" alt="Thành viên BTC FTU Forum" class="timeline-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 Ban Tổ Chức sự kiện FTU Forum</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Thực thi & Hỗ trợ sự kiện:</strong> Trực tiếp tham gia các khâu chuẩn bị hậu cần, sản xuất ấn phẩm truyền thông và điều phối hiện trường cho các sự kiện của CLB.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Học hỏi & Thích ứng:</strong> Rèn luyện tác phong làm việc chuyên nghiệp, khả năng phối hợp nhóm và giải quyết tình huống phát sinh trong môi trường đại học năng động.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Node 6: Phó Chủ tịch CLB Humans of Phan Đình Phùng (TÁCH RIÊNG CẤP 3) -->
+            <div class="tea-node highschool active" data-year="2021 - 2022">
+              <div class="teacup-anchor">
+                <div class="teacup-steam">
+                  <span>~</span><span>~</span><span>~</span>
+                </div>
+                <div class="teacup-visual cup-rose">
+                  <div class="cup-rim"></div>
+                  <div class="cup-saucer"></div>
+                  <div class="cup-symbol">🏫</div>
+                </div>
+                <span class="node-year">2021 - 2022</span>
+              </div>
+
+              <div class="tea-card-content glass-panel">
+                <div class="card-teatime-badge">Nền Tảng Giai Đoạn Cấp 3 (THPT)</div>
+                <div class="role-time-tag">2021 - 2022 • THPT Phan Đình Phùng</div>
+                <h3 class="role-title">Phó Chủ Tịch Câu Lạc Bộ</h3>
+                <h4 class="org-title">CLB Humans of Phan Đình Phùng - Trường THPT Phan Đình Phùng</h4>
+
+                <div class="timeline-photo-wrap">
+                  <img src="./images/7. Phó Chủ tịch CLB.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1y3gUmy7JrfSEr7Rb8KtE1s5TQB55o056';" alt="Phó Chủ tịch CLB Humans of PDP" class="timeline-photo-img">
+                  <div class="photo-caption-overlay"><span>📸 Hoạt động CLB Humans of Phan Đình Phùng</span></div>
+                </div>
+                
+                <ul class="role-achievements-list">
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Sáng tạo nội dung nhân văn:</strong> Cùng ban điều hành triển khai các bài phóng sự ảnh, phỏng vấn và câu chuyện giàu cảm xúc về thầy cô, học sinh trường Phan Đình Phùng.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check text-gold"></i>
+                    <span><strong>Kỹ năng truyền thông sơ khởi:</strong> Rèn luyện kỹ năng viết lách, chụp ảnh, biên tập nội dung và tổ chức các sự kiện tri ấn học đường từ những năm cấp 3.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. QUEEN OF HEARTS (AWARDS & HONORS) -->
+    <!-- ============================================================ -->
+    <section id="awards-section" class="wonder-section queen-wonder-section">
+      <div class="section-decor decor-rose-bush">🌹</div>
+      <div class="section-decor decor-crown">👑</div>
+
+      <div class="section-container">
+        
+        <div class="queen-header-block">
+          <div class="royal-hearts-banner">
+            <span class="heart-symbol">♥️</span>
+            <span class="heart-symbol">♠️</span>
+            <span class="heart-symbol">♦️</span>
+            <span class="heart-symbol">♣️</span>
+          </div>
+          <span class="section-subtitle">Chương IV: Thành Tích & Ghi Nhận</span>
+          <h2 class="section-title">Bảng Vàng Thành Tích Của Nữ Hoàng Cơ</h2>
+          <p class="section-desc">
+            Những giải thưởng và chứng nhận ghi dấu sự nỗ lực, tinh thần nghiên cứu khoa học và tư duy sáng tạo trong suốt hành trình học tập.
+          </p>
+        </div>
+
+        <!-- Royal Playing Cards Grid (3D Interactive Tilt Cards) -->
+        <div class="royal-cards-grid">
+          
+          <!-- Card 1: Top 10 Khởi nghiệp FTU -->
+          <div class="royal-card-item card-ace-hearts" data-tilt>
+            <div class="card-inner-bevel">
+              <div class="card-corner top-left">
+                <span class="card-rank">A</span>
+                <span class="card-suit">♥</span>
+              </div>
+              <div class="card-corner bottom-right">
+                <span class="card-rank">A</span>
+                <span class="card-suit">♥</span>
+              </div>
+
+              <div class="card-center-crest">
+                <div class="royal-seal">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="award-category">GIẢI THƯỞNG Ý TƯỞNG KHỞI NGHIỆP</div>
+                <h3 class="award-name">TOP 10 CUỘC THI “HỌC SINH, SINH VIÊN VỚI Ý TƯỞNG KHỞI NGHIỆP”</h3>
+                <div class="award-level">LẦN THỨ VIII CẤP TRƯỜNG ĐẠI HỌC NGOẠI THƯƠNG</div>
+                
+                <div class="award-photo-wrap">
+                  <img src="./images/8. Top 10 Khởi nghiệp.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1QWdkbezXt2KfAh63BDZvpsmCwpfy_FrU';" alt="Top 10 Khởi nghiệp FTU" class="award-photo-img">
+                </div>
+
+                <p class="award-detail-text">
+                  Lọt vào Top 10 ý tưởng khởi nghiệp sáng tạo cấp trường nhờ vào mô hình đề xuất có tính khả thi, tư duy phản biện tốt và kỹ năng trình bày logic.
+                </p>
+
+                <div class="royal-ribbon">
+                  <span>🏆 TOP 10 SV_STARTUP FTU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Giải Ba NCKH Cấp Khoa FTU -->
+          <div class="royal-card-item card-king-diamonds" data-tilt>
+            <div class="card-inner-bevel">
+              <div class="card-corner top-left">
+                <span class="card-rank">K</span>
+                <span class="card-suit">♦</span>
+              </div>
+              <div class="card-corner bottom-right">
+                <span class="card-rank">K</span>
+                <span class="card-suit">♦</span>
+              </div>
+
+              <div class="card-center-crest">
+                <div class="royal-seal seal-gold">
+                  <i class="fa-solid fa-medal"></i>
+                </div>
+                <div class="award-category">NGHIÊN CỨU HỌC THUẬT</div>
+                <h3 class="award-name">GIẢI BA NGHIÊN CỨU KHOA HỌC (NCKH)</h3>
+                <div class="award-level">CẤP KHOA - TRƯỜNG ĐẠI HỌC NGOẠI THƯƠNG</div>
+                
+                <div class="award-photo-wrap">
+                  <img src="./images/9. Giải Ba NCKH.jpg" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1hmV0Bpef-wmCWTFXb3FUrFkPjVlTlqiI';" alt="Giải Ba NCKH Cấp Khoa FTU" class="award-photo-img">
+                </div>
+
+                <p class="award-detail-text">
+                  Đề tài nghiên cứu ứng dụng phương pháp luận khoa học, thu thập và xử lý số liệu chặt chẽ trong lĩnh vực chuyên ngành đào tạo.
+                </p>
+
+                <div class="royal-ribbon ribbon-gold">
+                  <span>🥉 GIẢI BA NCKH FTU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Chứng chỉ MOS Quốc Tế (2021 - 2022) -->
+          <div class="royal-card-item card-queen-spades" data-tilt>
+            <div class="card-inner-bevel">
+              <div class="card-corner top-left">
+                <span class="card-rank">Q</span>
+                <span class="card-suit">♠</span>
+              </div>
+              <div class="card-corner bottom-right">
+                <span class="card-rank">Q</span>
+                <span class="card-suit">♠</span>
+              </div>
+
+              <div class="card-center-crest">
+                <div class="royal-seal seal-sapphire">
+                  <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div class="award-category">CHỨNG CHỈ QUỐC TẾ (2021 - 2022)</div>
+                <h3 class="award-name">CHỨNG CHỈ TIN HỌC VĂN PHÒNG MOS</h3>
+                <div class="award-level">MICROSOFT OFFICE SPECIALIST (WORD, EXCEL, POWERPOINT)</div>
+                
+                <p class="award-detail-text">
+                  Đạt chứng chỉ chuẩn hóa quốc tế của Microsoft trong giai đoạn 2021 - 2022, minh chứng cho năng lực thao tác tin học văn phòng thành thạo và chuyên nghiệp.
+                </p>
+
+                <div class="royal-ribbon ribbon-sapphire">
+                  <span>📜 MOS MASTER CREDENTIAL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Fun Interactive Mini-game: Paint the Roses Red -->
+        <div class="paint-roses-game-box glass-panel">
+          <div class="game-left">
+            <span class="game-tag">Mini Game Xứ Sở Thần Tiên</span>
+            <h4 class="game-title">Tưới Đỏ Những Đóa Hồng Của Nữ Hoàng 🌹</h4>
+            <p class="game-desc">Nhấp vào từng đóa hoa hồng trắng bên dưới để cùng sơn đỏ khu vườn ma thuật!</p>
+          </div>
+          <div class="roses-interactive-strip" id="roses-garden">
+            <button class="rose-item rose-white" data-rose="1" title="Nhấp để sơn đỏ!">🤍</button>
+            <button class="rose-item rose-white" data-rose="2" title="Nhấp để sơn đỏ!">🤍</button>
+            <button class="rose-item rose-white" data-rose="3" title="Nhấp để sơn đỏ!">🤍</button>
+            <button class="rose-item rose-white" data-rose="4" title="Nhấp để sơn đỏ!">🤍</button>
+            <button class="rose-item rose-white" data-rose="5" title="Nhấp để sơn đỏ!">🤍</button>
+          </div>
+          <div class="game-status" id="rose-game-msg">Đã sơn đỏ: <span id="rose-count">0</span>/5 hoa hồng</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. THE GOLDEN KEY & LOOKING GLASS (CONTACT & FOOTER) -->
+    <!-- ============================================================ -->
+    <section id="contact-section" class="wonder-section contact-wonder-section">
+      <div class="section-container">
+        
+        <div class="contact-master-card glass-panel">
+          
+          <div class="contact-grid">
+            <!-- Left: Golden Key & Message -->
+            <div class="contact-info-side">
+              <div class="key-symbol-wrap">
+                <span class="magic-golden-key">🗝️</span>
+              </div>
+              <span class="section-subtitle">Chương Cuối: Kết Nối Cùng Nhau</span>
+              <h2 class="contact-main-title">Gửi Lời Nhắn Đến Hoài An</h2>
+              <p class="contact-pitch">
+                Nếu bạn đang tìm kiếm một người cộng sự chủ động, có tinh thần trách nhiệm cao, thành thạo công cụ số và luôn khao khát học hỏi, đừng ngần ngại kết nối với tôi nhé!
+              </p>
+
+              <div class="direct-contact-list">
+                <div class="contact-row-item">
+                  <div class="row-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div class="row-content">
+                    <span class="row-label">Điện thoại / Zalo:</span>
+                    <a href="tel:0838818890" class="row-value copyable" data-copy="0838818890">
+                      0838 818 890 <i class="fa-regular fa-copy" title="Sao chép"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contact-row-item">
+                  <div class="row-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="row-content">
+                    <span class="row-label">Địa chỉ Email:</span>
+                    <a href="mailto:nhoaian2712@gmail.com" class="row-value copyable" data-copy="nhoaian2712@gmail.com">
+                      nhoaian2712@gmail.com <i class="fa-regular fa-copy" title="Sao chép"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="contact-row-item">
+                  <div class="row-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="row-content">
+                    <span class="row-label">Khu vực sinh sống:</span>
+                    <span class="row-value">Thanh Xuân, Hà Nội, Việt Nam</span>
+                  </div>
+                </div>
+
+                <div class="contact-row-item">
+                  <div class="row-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                  <div class="row-content">
+                    <span class="row-label">Trường Đại học:</span>
+                    <span class="row-value">Trường Đại học Ngoại Thương (FTU)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="social-charms-group">
+                <a href="mailto:nhoaian2712@gmail.com" class="social-charm" title="Gửi Email trực tiếp">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="tel:0838818890" class="social-charm" title="Gọi điện thoại">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-charm" title="Facebook cá nhân">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <button class="social-charm copyable" data-copy="nhoaian2712@gmail.com" title="Sao chép Email">
+                  <i class="fa-regular fa-clone"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Right: Magical Letterbox Form -->
+            <div class="contact-form-side">
+              <div class="letterbox-card">
+                <div class="letter-stamp">
+                  <span class="stamp-post">FTU 2026</span>
+                  <span>🐇</span>
+                </div>
+                <h3 class="form-card-title">Gửi Thông Điệp Qua Gương Kính</h3>
+                <p class="form-card-sub">Lá thư sẽ được gửi gắm trực tiếp đến Hoài An!</p>
+
+                <form id="magic-contact-form" class="wonderland-form">
+                  <div class="form-group">
+                    <label for="sender-name"><i class="fa-regular fa-user"></i> Tên của bạn / Quý đơn vị:</label>
+                    <input type="text" id="sender-name" name="name" required placeholder="Họ và tên của bạn...">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sender-email"><i class="fa-regular fa-envelope"></i> Email phản hồi:</label>
+                    <input type="email" id="sender-email" name="email" required placeholder="name@example.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sender-subject"><i class="fa-solid fa-feather"></i> Mục đích liên hệ:</label>
+                    <select id="sender-subject" name="subject">
+                      <option value="Cơ hội hợp tác & Tuyển dụng">✨ Cơ hội hợp tác & Tuyển dụng</option>
+                      <option value="Dự án & Tổ chức sự kiện">🎪 Trao đổi dự án & Sự kiện</option>
+                      <option value="Giao lưu sinh viên FTU">🎓 Giao lưu học tập & Ngoại khóa</option>
+                      <option value="Khác">✉️ Thông điệp khác</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sender-message"><i class="fa-regular fa-message"></i> Lời nhắn gửi:</label>
+                    <textarea id="sender-message" name="message" rows="4" required placeholder="Hãy viết vài dòng gửi đến Hoài An nhé..."></textarea>
+                  </div>
+
+                  <button type="submit" class="wonder-btn primary-btn send-btn" id="send-msg-btn">
+                    <span class="btn-glow"></span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Thả Thông Điệp Vào Chai Thần Kỳ</span>
+                  </button>
+
+                  <div id="form-success-notice" class="form-notice success-notice hidden">
+                    🎉 Lá thư của bạn đã được gửi thành công đến Hoài An! Xin chân thành cảm ơn!
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Wonderland Footer -->
+        <footer class="wonder-footer">
+          <div class="footer-flora">
+            <span class="flower-icon">🌸</span>
+            <span class="flower-icon">🍄</span>
+            <span class="flower-icon">🫖</span>
+            <span class="flower-icon">♥️</span>
+            <span class="flower-icon">🌹</span>
+          </div>
+          <p class="copyright-text">
+            © 2026 <strong>Nguyễn Hoài An</strong> — Lấy cảm hứng từ Xứ Sở Thần Tiên <em>Alice in Wonderland</em>.
+          </p>
+          <p class="footer-quote">
+            "Mỗi hành trình kỳ diệu đều bắt đầu từ một bước chân chủ động."
+          </p>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Copy Notification -->
+  <div id="magic-toast" class="magic-toast">
+    <span class="toast-icon">✨</span>
+    <span class="toast-msg">Đã sao chép vào bộ nhớ tạm!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+/* ==========================================================================
+   ALICE IN WONDERLAND INTERACTIVE PORTFOLIO - JAVASCRIPT ENGINE
+   Featuring: Web Audio Synthesizer, Particle Canvas, Interactive Rabbit Hole,
+   Cheshire Cat AI Simulator, Mad Hatter Tea Party & Queen of Hearts Cards.
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMagicCanvas();
+  initCustomCursor();
+  initWebAudioSystem();
+  initRabbitHoleEntrance();
+  initLivePocketWatch();
+  initLanguageSwitcher();
+  initCheshireCatAndAISimulator();
+  initMadHatterTeaParty();
+  initQueenOfHeartsMiniGame();
+  initContactAndCopyActions();
+  init3DCardTilt();
+});
+
+/* ==========================================================================
+   1. PROCEDURAL WEB AUDIO SYNTHESIZER (FAIRYTALE LULLABY & SFX)
+   ========================================================================== */
+let audioCtx = null;
+let isMusicPlaying = false;
+let isSfxEnabled = true;
+let musicInterval = null;
+
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContext();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+// Procedural Fairytale Music Box Synthesizer (Celesta / Music Box Waltz)
+const fairytaleMelody = [
+  { note: 523.25, dur: 0.5 }, // C5
+  { note: 659.25, dur: 0.5 }, // E5
+  { note: 783.99, dur: 0.5 }, // G5
+  { note: 987.77, dur: 1.0 }, // B5
+  { note: 880.00, dur: 0.5 }, // A5
+  { note: 659.25, dur: 0.5 }, // E5
+  { note: 698.46, dur: 0.5 }, // F5
+  { note: 880.00, dur: 1.0 }, // A5
+  { note: 783.99, dur: 0.5 }, // G5
+  { note: 587.33, dur: 0.5 }, // D5
+  { note: 659.25, dur: 0.5 }, // E5
+  { note: 523.25, dur: 1.2 }  // C5
+];
+
+let melodyIndex = 0;
+
+function playMusicBoxNote(freq, duration = 0.5) {
+  if (!isMusicPlaying) return;
+  try {
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+    // Bell / Celesta harmonic
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'triangle';
+    osc2.frequency.setValueAtTime(freq * 2.01, ctx.currentTime);
+
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration * 2.2);
+
+    gain2.gain.setValueAtTime(0.03, ctx.currentTime);
+    gain2.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration * 1.5);
+
+    osc.connect(gain);
+    osc2.connect(gain2);
+    gain.connect(ctx.destination);
+    gain2.connect(ctx.destination);
+
+    osc.start();
+    osc2.start();
+    osc.stop(ctx.currentTime + duration * 2.5);
+    osc2.stop(ctx.currentTime + duration * 2.0);
+  } catch (e) {
+    console.warn('Audio Context Error:', e);
+  }
+}
+
+function startWonderlandMusic() {
+  isMusicPlaying = true;
+  melodyIndex = 0;
+  playNextNote();
+}
+
+function playNextNote() {
+  if (!isMusicPlaying) return;
+  const current = fairytaleMelody[melodyIndex];
+  playMusicBoxNote(current.note, current.dur);
+  
+  melodyIndex = (melodyIndex + 1) % fairytaleMelody.length;
+  musicInterval = setTimeout(playNextNote, current.dur * 750);
+}
+
+function stopWonderlandMusic() {
+  isMusicPlaying = false;
+  if (musicInterval) clearTimeout(musicInterval);
+}
+
+// Sound FX: Magic Chime
+function playMagicChime() {
+  if (!isSfxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+    notes.forEach((freq, idx) => {
+      setTimeout(() => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.85);
+      }, idx * 60);
+    });
+  } catch (e) {}
+}
+
+// Sound FX: Bubble Cork Pop
+function playPopSound() {
+  if (!isSfxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.15);
+  } catch (e) {}
+}
+
+function initWebAudioSystem() {
+  const audioBtn = document.getElementById('audio-toggle-btn');
+  const sfxBtn = document.getElementById('sfx-toggle-btn');
+
+  if (audioBtn) {
+    audioBtn.addEventListener('click', () => {
+      getAudioContext();
+      if (!isMusicPlaying) {
+        startWonderlandMusic();
+        audioBtn.classList.add('playing');
+        audioBtn.querySelector('.sound-label').textContent = 'Âm Nhạc: Đang Bật';
+        showToast('🎶 Đang phát nhạc nền Xứ Sở Thần Tiên!');
+      } else {
+        stopWonderlandMusic();
+        audioBtn.classList.remove('playing');
+        audioBtn.querySelector('.sound-label').textContent = 'Wonderland Lo-fi';
+        showToast('🔇 Đã tắt nhạc nền.');
+      }
+    });
+  }
+
+  if (sfxBtn) {
+    sfxBtn.addEventListener('click', () => {
+      isSfxEnabled = !isSfxEnabled;
+      sfxBtn.classList.toggle('active', isSfxEnabled);
+      sfxBtn.querySelector('.sfx-label').textContent = isSfxEnabled ? 'SFX: Bật' : 'SFX: Tắt';
+      if (isSfxEnabled) {
+        playMagicChime();
+        showToast('✨ Đã bật hiệu ứng âm thanh ma thuật!');
+      } else {
+        showToast('🔇 Đã tắt hiệu ứng âm thanh.');
+      }
+    });
+  }
+}
+
+/* ==========================================================================
+   2. MAGIC CANVAS PARTICLE SYSTEM (SPARKLES, CARDS, TEA LEAVES, WATCHES)
+   ========================================================================= */
+function initMagicCanvas() {
+  const canvas = document.getElementById('magic-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const symbols = ['✨', '♠', '♥', '♦', '♣', '🍃', '⭐', '☕', '🗝️'];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = Math.random() * width;
+      this.y = initial ? Math.random() * height : -30;
+      this.size = Math.random() * 14 + 10;
+      this.speedY = Math.random() * 0.8 + 0.3;
+      this.speedX = (Math.random() - 0.5) * 0.6;
+      this.rotation = Math.random() * 360;
+      this.rotationSpeed = (Math.random() - 0.5) * 1.5;
+      this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
+      this.opacity = Math.random() * 0.45 + 0.15;
+      this.color = this.symbol === '♥' || this.symbol === '♦' ? '#ff4081' : 
+                   this.symbol === '🍃' ? '#69f0ae' : '#ffd166';
+    }
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+      this.rotation += this.rotationSpeed;
+      if (this.y > height + 40 || this.x < -40 || this.x > width + 40) {
+        this.reset();
+      }
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate((this.rotation * Math.PI) / 180);
+      ctx.globalAlpha = this.opacity;
+      ctx.font = `${this.size}px serif`;
+      ctx.fillStyle = this.color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(this.symbol, 0, 0);
+      ctx.restore();
+    }
+  }
+
+  for (let i = 0; i < 45; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let p of particles) {
+      p.update();
+      p.draw();
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+/* ==========================================================================
+   3. CUSTOM CURSOR & SPARKLE TRAILS
+   ========================================================================== */
+function initCustomCursor() {
+  const cursor = document.getElementById('custom-cursor');
+  if (!cursor || window.innerWidth < 768) return;
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+
+  document.addEventListener('click', (e) => {
+    createClickSparkle(e.clientX, e.clientY);
+  });
+}
+
+function createClickSparkle(x, y) {
+  for (let i = 0; i < 6; i++) {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'click-sparkle-fx';
+    sparkle.textContent = ['✨', '⭐', '🌸', '💫'][Math.floor(Math.random() * 4)];
+    sparkle.style.position = 'fixed';
+    sparkle.style.left = `${x}px`;
+    sparkle.style.top = `${y}px`;
+    sparkle.style.pointerEvents = 'none';
+    sparkle.style.zIndex = '99999';
+    sparkle.style.fontSize = '1.2rem';
+    sparkle.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+
+    const angle = (Math.PI * 2 / 6) * i;
+    const dist = Math.random() * 40 + 20;
+    const destX = Math.cos(angle) * dist;
+    const destY = Math.sin(angle) * dist;
+
+    document.body.appendChild(sparkle);
+
+    requestAnimationFrame(() => {
+      sparkle.style.transform = `translate(${destX}px, ${destY}px) scale(0)`;
+      sparkle.style.opacity = '0';
+    });
+
+    setTimeout(() => sparkle.remove(), 650);
+  }
+}
+
+/* ==========================================================================
+   4. SECTION A: THE RABBIT HOLE INTRO ENTRANCE
+   ========================================================================== */
+function initRabbitHoleEntrance() {
+  const introSection = document.getElementById('rabbit-hole-intro');
+  const mainHub = document.getElementById('wonderland-main');
+  const mainNav = document.getElementById('main-nav');
+  const drinkMePotion = document.getElementById('drink-me-potion');
+  const eatMeCake = document.getElementById('eat-me-cake');
+  const portalReturnBtn = document.getElementById('portal-return-btn');
+
+  function enterWonderland(itemType) {
+    playPopSound();
+    playMagicChime();
+    
+    // Auto-start music on first interaction
+    if (!isMusicPlaying) {
+      startWonderlandMusic();
+      const audioBtn = document.getElementById('audio-toggle-btn');
+      if (audioBtn) {
+        audioBtn.classList.add('playing');
+        audioBtn.querySelector('.sound-label').textContent = 'Âm Nhạc: Đang Bật';
+      }
+    }
+
+    introSection.classList.add('shrink-fade-out');
+
+    setTimeout(() => {
+      introSection.style.display = 'none';
+      mainHub.classList.remove('hidden');
+      if (mainNav) mainNav.classList.add('visible');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      showToast(itemType === 'drink' 
+        ? '💧 Bạn đã uống Lọ Thần Dược và sẵn sàng khám phá portfolio!' 
+        : '🎂 Bạn đã nếm Chiếc Bánh Ngọt và bước vào thế giới diệu kỳ!');
+    }, 900);
+  }
+
+  if (drinkMePotion) {
+    drinkMePotion.addEventListener('click', () => enterWonderland('drink'));
+  }
+  if (eatMeCake) {
+    eatMeCake.addEventListener('click', () => enterWonderland('cake'));
+  }
+
+  if (portalReturnBtn) {
+    portalReturnBtn.addEventListener('click', () => {
+      playMagicChime();
+      introSection.style.display = 'flex';
+      requestAnimationFrame(() => {
+        introSection.classList.remove('shrink-fade-out');
+        mainHub.classList.add('hidden');
+      });
+    });
+  }
+
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.getAttribute('href').substring(1);
+      const targetSec = document.getElementById(targetId);
+      if (targetSec) {
+        navItems.forEach(n => n.classList.remove('active'));
+        item.classList.add('active');
+        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        playPopSound();
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   5. WHITE RABBIT LIVE POCKET WATCH & TIME SYNC
+   ========================================================================== */
+function initLivePocketWatch() {
+  const clockEl = document.getElementById('live-pocket-time');
+  const dateEl = document.getElementById('live-pocket-date');
+
+  function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    if (clockEl) {
+      clockEl.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    if (dateEl) {
+      const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+      const dayName = days[now.getDay()];
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      dateEl.textContent = `${dayName}, Ngày ${day}/${month}/${year}`;
+    }
+  }
+
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  const cvBtn = document.getElementById('download-cv-btn');
+  if (cvBtn) {
+    cvBtn.addEventListener('click', () => {
+      playMagicChime();
+      window.print();
+    });
+  }
+}
+
+/* ==========================================================================
+   6. MULTI-LANGUAGE GREETING SWITCHER
+   ========================================================================== */
+function initLanguageSwitcher() {
+  const langTabs = document.querySelectorAll('.lang-pill');
+  const greetingDisplay = document.getElementById('greeting-text');
+
+  const greetings = {
+    vi: '"Chào bạn! Tôi là Hoài An. Tôi luôn chủ động, trách nhiệm và sẵn sàng học hỏi để tạo ra giá trị thiết thực trong mỗi dự án."',
+    fr: '"Bonjour ! Je m\'appelle Hoài An, étudiante en Français Commercial à l\'ESCE. Dynamique, créative et toujours prête à relever de nouveaux défis !"',
+    en: '"Hello! I am Hoai An, a proactive & creative student from Foreign Trade University. Ready to bring innovation, dedication, and value to your team!"'
+  };
+
+  langTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      playPopSound();
+      langTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const lang = tab.getAttribute('data-lang');
+      
+      greetingDisplay.style.opacity = '0';
+      setTimeout(() => {
+        greetingDisplay.textContent = greetings[lang];
+        greetingDisplay.style.opacity = '1';
+      }, 200);
+    });
+  });
+}
+
+/* ==========================================================================
+   7. CHESHIRE CAT INTERACTIVE EYES & AI SIMULATOR
+   ========================================================================== */
+function initCheshireCatAndAISimulator() {
+  const catWidget = document.getElementById('cheshire-cat-interactive');
+  const skillOrbs = document.querySelectorAll('.skill-orb');
+  const aiPromptChips = document.querySelectorAll('.ai-chip-prompt');
+  const aiResponseBox = document.getElementById('ai-response-box');
+
+  skillOrbs.forEach(orb => {
+    orb.addEventListener('mouseenter', () => {
+      playPopSound();
+      if (catWidget) {
+        catWidget.style.transform = 'scale(1.12) rotate(-5deg)';
+        catWidget.style.boxShadow = '0 0 40px #ffd166, 0 0 20px #e91e63';
+      }
+    });
+    orb.addEventListener('mouseleave', () => {
+      if (catWidget) {
+        catWidget.style.transform = 'scale(1) rotate(0deg)';
+        catWidget.style.boxShadow = '';
+      }
+    });
+  });
+
+  const aiAnswers = {
+    fit: '💡 <strong>Trợ lý AI phân tích:</strong> Hoài An sở hữu tư duy làm việc chủ động, tinh thần trách nhiệm cao và khả năng học hỏi nhanh. Cô ấy kết hợp nhuần nhuyễn giữa chứng chỉ quốc tế MOS (2021-2022), kỹ năng thiết kế & chỉnh sửa (Illustrator, Canva, CapCut) cùng khả năng ứng dụng các mô hình AI hiện đại để nâng cao hiệu suất công việc.',
+    experience: '🎪 <strong>Trợ lý AI phân tích:</strong> Hoài An có kinh nghiệm phong phú trong việc lập kế hoạch, điều phối dự án, quản trị cộng đồng Group K65 FTU với 14.000+ thành viên (14K) và xử lý dữ liệu tuyển sinh. Đặc biệt trên cương vị là Chủ tịch CLB Diễn đàn Sinh viên FTU Forum, cô đã trực tiếp chỉ đạo và tổ chức thành công Ngày Hội Tuyển Sinh FTU 2026.',
+    french: '🇫🇷 <strong>Trợ lý AI phân tích:</strong> Hoài An là sinh viên chuyên ngành Tiếng Pháp Thương Mại tại Trường Đại học Ngoại thương (2023 - Hiện tại). Cô có nền tảng ngoại ngữ vững vàng, khả năng giao tiếp và xử lý văn bản thương mại chuyên sâu bằng tiếng Pháp.'
+  };
+
+  aiPromptChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      playMagicChime();
+      const qKey = chip.getAttribute('data-q');
+      aiPromptChips.forEach(c => c.style.borderColor = '');
+      chip.style.borderColor = '#ffd166';
+
+      aiResponseBox.innerHTML = '<span class="ai-pulse"></span> <em>Mèo Cheshire đang tổng hợp thông tin...</em>';
+
+      setTimeout(() => {
+        aiResponseBox.innerHTML = `<p class="ai-text-reply">${aiAnswers[qKey]}</p>`;
+      }, 350);
+    });
+  });
+}
+
+/* ==========================================================================
+   8. MAD HATTER TEA PARTY (TIMELINE FILTERS & INTERACTIVE TEACUPS)
+   ========================================================================== */
+function initMadHatterTeaParty() {
+  const filterBtns = document.querySelectorAll('.tea-filter-btn');
+  const teaNodes = document.querySelectorAll('.tea-node');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playPopSound();
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      teaNodes.forEach(node => {
+        if (filter === 'all' || node.classList.contains(filter)) {
+          node.classList.remove('hidden-filter');
+          node.style.opacity = '0';
+          setTimeout(() => node.style.opacity = '1', 150);
+        } else {
+          node.classList.add('hidden-filter');
+        }
+      });
+    });
+  });
+
+  const cups = document.querySelectorAll('.teacup-visual');
+  cups.forEach(cup => {
+    cup.addEventListener('click', () => {
+      playMagicChime();
+      cup.style.transform = 'scale(1.3) rotate(30deg)';
+      setTimeout(() => {
+        cup.style.transform = '';
+      }, 400);
+      showToast('🫖 Tách trà vừa rót ra một câu chuyện trải nghiệm ý nghĩa!');
+    });
+  });
+}
+
+/* ==========================================================================
+   9. QUEEN OF HEARTS MINI-GAME (PAINT THE ROSES RED)
+   ========================================================================== */
+function initQueenOfHeartsMiniGame() {
+  const roses = document.querySelectorAll('.rose-item');
+  const countDisplay = document.getElementById('rose-count');
+  const gameMsg = document.getElementById('rose-game-msg');
+  let paintedCount = 0;
+
+  roses.forEach(rose => {
+    rose.addEventListener('click', () => {
+      if (!rose.classList.contains('painted-red')) {
+        playPopSound();
+        rose.classList.add('painted-red');
+        rose.textContent = '🌹';
+        paintedCount++;
+        if (countDisplay) countDisplay.textContent = paintedCount;
+
+        if (paintedCount === 5) {
+          playMagicChime();
+          if (gameMsg) {
+            gameMsg.innerHTML = '🎉 <strong>Tuyệt vời!</strong> Tất cả đóa hoa hồng trong vườn đã được tô điểm sắc đỏ rực rỡ!';
+            gameMsg.style.color = '#ff4081';
+          }
+          showToast('👑 Nữ Hoàng Cơ gửi lời khen ngợi sự tỉ mỉ của bạn!');
+        }
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   10. CONTACT FORM, INSTANT COPY & TOAST NOTIFICATIONS
+   ========================================================================== */
+function initContactAndCopyActions() {
+  const copyables = document.querySelectorAll('.copyable');
+  copyables.forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const text = el.getAttribute('data-copy');
+      if (text) {
+        navigator.clipboard.writeText(text).then(() => {
+          playPopSound();
+          showToast(`📋 Đã sao chép: "${text}" vào bộ nhớ tạm!`);
+        });
+      }
+    });
+  });
+
+  const form = document.getElementById('magic-contact-form');
+  const notice = document.getElementById('form-success-notice');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      playMagicChime();
+
+      const name = document.getElementById('sender-name').value;
+      const subject = document.getElementById('sender-subject').value;
+
+      if (notice) {
+        notice.classList.remove('hidden');
+        notice.innerHTML = `🎉 Cảm ơn <strong>${name}</strong>! Thông điệp về "<em>${subject}</em>" đã được đóng chai và gửi tới Hoài An.`;
+      }
+
+      form.reset();
+      showToast('💌 Thông điệp ma thuật đã được gửi thành công!');
+    });
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById('magic-toast');
+  if (!toast) return;
+  const msgEl = toast.querySelector('.toast-msg');
+  if (msgEl) msgEl.innerHTML = message;
+
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+/* ==========================================================================
+   11. 3D CARD TILT EFFECT
+   ========================================================================== */
+function init3DCardTilt() {
+  const tiltCards = document.querySelectorAll('[data-tilt]');
+
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+}
+</script>
+</body>
+</html>
